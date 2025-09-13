@@ -353,25 +353,22 @@ static void scale1_indic1_anim_cb(void * var, int32_t v)
     lv_arc_set_value(var, v);
 
     lv_obj_t * card = lv_obj_get_parent(scale1);
-    lv_obj_t *arc = lv_obj_get_child(scale1, -3);
+    lv_obj_t * arc = lv_obj_get_child(scale1, -3);
 
-    if (arc == (lv_obj_t *)var)
-    {
-        lv_obj_t *label = lv_obj_get_child(card, -5);
+    if(arc == (lv_obj_t *)var) {
+        lv_obj_t * label = lv_obj_get_child(card, -5);
         lv_label_set_text_fmt(label, "Revenue: %" LV_PRId32 " %%", v);
     }
 
     arc = lv_obj_get_child(scale1, -2);
-    if (arc == (lv_obj_t *)var)
-    {
-        lv_obj_t *label = lv_obj_get_child(card, -3);
+    if(arc == (lv_obj_t *)var) {
+        lv_obj_t * label = lv_obj_get_child(card, -3);
         lv_label_set_text_fmt(label, "Sales: %" LV_PRId32 " %%", v);
     }
 
     arc = lv_obj_get_child(scale1, -1);
-    if (arc == (lv_obj_t *)var)
-    {
-        lv_obj_t *label = lv_obj_get_child(card, -1);
+    if(arc == (lv_obj_t *)var) {
+        lv_obj_t * label = lv_obj_get_child(card, -1);
         lv_label_set_text_fmt(label, "Costs: %" LV_PRId32 " %%", v);
     }
 }
