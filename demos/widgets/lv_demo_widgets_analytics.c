@@ -353,8 +353,27 @@ static void scale1_indic1_anim_cb(void * var, int32_t v)
     lv_arc_set_value(var, v);
 
     lv_obj_t * card = lv_obj_get_parent(scale1);
-    lv_obj_t * label = lv_obj_get_child(card, -5);
-    lv_label_set_text_fmt(label, "Revenue: %"LV_PRId32" %%", v);
+    lv_obj_t *arc = lv_obj_get_child(scale1, -3);
+
+    if (arc == (lv_obj_t *)var)
+    {
+        lv_obj_t *label = lv_obj_get_child(card, -5);
+        lv_label_set_text_fmt(label, "Revenue: %" LV_PRId32 " %%", v);
+    }
+
+    arc = lv_obj_get_child(scale1, -2);
+    if (arc == (lv_obj_t *)var)
+    {
+        lv_obj_t *label = lv_obj_get_child(card, -3);
+        lv_label_set_text_fmt(label, "Sales: %" LV_PRId32 " %%", v);
+    }
+
+    arc = lv_obj_get_child(scale1, -1);
+    if (arc == (lv_obj_t *)var)
+    {
+        lv_obj_t *label = lv_obj_get_child(card, -1);
+        lv_label_set_text_fmt(label, "Costs: %" LV_PRId32 " %%", v);
+    }
 }
 
 static void scale2_timer_cb(lv_timer_t * timer)
@@ -466,7 +485,7 @@ static lv_obj_t * create_scale_box(lv_obj_t * parent, const char * title, const 
     lv_obj_set_size(bullet1, 13, 13);
     lv_obj_remove_style(bullet1, NULL, LV_PART_SCROLLBAR);
     lv_obj_add_style(bullet1, &style_bullet, 0);
-    lv_obj_set_style_bg_color(bullet1, lv_palette_main(LV_PALETTE_RED), 0);
+    lv_obj_set_style_bg_color(bullet1, lv_palette_main(LV_PALETTE_BLUE), 0);
     lv_obj_t * label1 = lv_label_create(cont);
     lv_label_set_text_static(label1, text1);
 
@@ -474,7 +493,7 @@ static lv_obj_t * create_scale_box(lv_obj_t * parent, const char * title, const 
     lv_obj_set_size(bullet2, 13, 13);
     lv_obj_remove_style(bullet2, NULL, LV_PART_SCROLLBAR);
     lv_obj_add_style(bullet2, &style_bullet, 0);
-    lv_obj_set_style_bg_color(bullet2, lv_palette_main(LV_PALETTE_BLUE), 0);
+    lv_obj_set_style_bg_color(bullet2, lv_palette_main(LV_PALETTE_RED), 0);
     lv_obj_t * label2 = lv_label_create(cont);
     lv_label_set_text_static(label2, text2);
 
